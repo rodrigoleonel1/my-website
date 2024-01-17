@@ -1,7 +1,7 @@
 import Image from "next/image";
 
 import { ExternalLinkIcon, GithubIcon } from "../svg";
-import { Project } from "@/types";
+import { Project } from "@/libs/types";
 
 export default function ProjectCard({ project }: { project: Project }) {
   return (
