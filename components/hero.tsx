@@ -1,8 +1,8 @@
-import Image from "next/image";
 import { Abril_Fatface } from "next/font/google";
 
-import { GithubIcon, LinkedinIcon } from "@/components/svg";
-import MailClipboard from "./ui/mail-clipboard";
+import Clipboard from "./ui/clipboard";
+import Avatar from "./ui/avatar";
+import { GithubIcon, LinkedinIcon, MailIcon } from "@/components/svg";
 
 const AbrilFatface = Abril_Fatface({
   weight: ["400"],
@@ -18,7 +18,7 @@ export default function Hero() {
         >
           Rodrigo Alarcón.
         </h1>
-        <h2 className="text-xl font-semibold md:text-2xl dark:text-zinc-200">
+        <h2 className="text-xl font-semibold md:text-3xl">
           Desarrollador Fullstack.
         </h2>
         <p className="text-zinc-600 dark:text-zinc-400">
@@ -31,6 +31,7 @@ export default function Hero() {
             href="https://github.com/rodrigoleonel1"
             target={"_blank"}
             rel={"noreferrer"}
+            aria-label="See the repository for this project on github."
           >
             <GithubIcon
               size={32}
@@ -41,26 +42,19 @@ export default function Hero() {
             href="https://www.linkedin.com/in/rodrigoalarc%C3%B3n/"
             target={"_blank"}
             rel={"noreferrer"}
+            aria-label="See this project website."
           >
             <LinkedinIcon
               size={32}
               className="cursor-pointer hover:text-sky-600"
             />
           </a>
-          <MailClipboard
-            text={{ contact: "rodricsxd@gmail.com", type: "Email" }}
-          />
+          <Clipboard text={{ contact: "rodricsxd@gmail.com", type: "Email" }}>
+            <MailIcon size={32} className="cursor-pointer hover:text-red-700" />
+          </Clipboard>
         </article>
       </article>
-      <figure className="bg-emerald-300 border-emerald-400 border-8 rounded-full shadow-md overflow-hidden hidden md:block col-span-3 dark:border-teal-700 dark:bg-teal-600">
-        <Image
-          width={250}
-          height={250}
-          className="h-full "
-          src="/avatar.png"
-          alt="Rodrigo Alarcón avatar portfolio"
-        />
-      </figure>
+      <Avatar />
     </section>
   );
 }

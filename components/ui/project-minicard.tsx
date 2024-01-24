@@ -21,7 +21,7 @@ export default function ProjectMiniCard({ project }: { project: MiniProject }) {
         <p className="text-sm text-zinc-600 dark:text-zinc-400">
           {project.description}
         </p>
-        <div className="flex flex-wrap items-center gap-1">
+        <footer className="flex flex-wrap items-center gap-1">
           {project.tools.map((tool) => (
             <span
               key={tool}
@@ -30,7 +30,7 @@ export default function ProjectMiniCard({ project }: { project: MiniProject }) {
               {tool}
             </span>
           ))}
-        </div>
+        </footer>
       </article>
     </a>
   );

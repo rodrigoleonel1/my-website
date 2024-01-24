@@ -1,14 +1,19 @@
 "use client";
 
 import { toast } from "sonner";
-import { MailIcon } from "../svg";
 
 interface TextProps {
   type: string;
   contact: string;
 }
 
-export default function MailClipboard({ text }: { text: TextProps }) {
+export default function Clipboard({
+  text,
+  children,
+}: {
+  text: TextProps;
+  children: React.ReactNode;
+}) {
   const handleClick = () => {
     navigator.clipboard.writeText(text.contact);
     toast.success(
@@ -16,9 +21,5 @@ export default function MailClipboard({ text }: { text: TextProps }) {
     );
   };
 
-  return (
-    <div onClick={handleClick}>
-      <MailIcon size={32} className="cursor-pointer hover:text-red-700" />
-    </div>
-  );
+  return <div onClick={handleClick}>{children}</div>;
 }

@@ -1,17 +1,17 @@
-export default function MoonIcon({
+export default function XIcon({
   className,
   size,
-  onClick
+  onClick,
 }: {
   className?: string;
   size?: number;
-  onClick?: () => void
+  onClick?: () => void;
 }) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      width={size? size : "24"}
-      height={size? size : "24"}
+      width={size ? size : "24"}
+      height={size ? size : "24"}
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
@@ -21,7 +21,9 @@ export default function MoonIcon({
       className={className}
       onClick={onClick}
     >
-      <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" />
+      <line x1="4" x2="20" y1="12" y2="12" />
+      <line x1="4" x2="20" y1="6" y2="6" />
+      <line x1="4" x2="20" y1="18" y2="18" />
     </svg>
   );
 }

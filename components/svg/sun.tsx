@@ -1,9 +1,11 @@
 export default function SunIcon({
   className,
   size,
+  onClick
 }: {
   className?: string;
   size?: number;
+  onClick?: () => void
 }) {
   return (
     <svg
@@ -17,6 +19,7 @@ export default function SunIcon({
       strokeLinecap="round"
       strokeLinejoin="round"
       className={className}
+      onClick={onClick}
     >
       <circle cx="12" cy="12" r="4" />
       <path d="M12 2v2" />

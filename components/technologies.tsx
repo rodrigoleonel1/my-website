@@ -9,7 +9,7 @@ export default function Technologies() {
       <h2 className="text-3xl font-semibold mb-6 flex place-items-center gap-2">
         <ToolsIcon size={32} className="text-emerald-400" /> Tecnologías
       </h2>
-      <div className="grid grid-cols-2 gap-3 sm:gap-4 sm:grid-cols-3">
+      <section className="grid grid-cols-2 gap-3 sm:gap-4 sm:grid-cols-3">
         {SKILLS.map((skill) => (
           <article
             key={skill.name}
@@ -24,15 +24,15 @@ export default function Technologies() {
               src={skill.src}
               alt={skill.name}
             />
-            <span className="font-medium text-sm text-teal-600 dark:text-white">
+            <span className="font-medium text-sm dark:text-white">
               {skill.name}
             </span>
           </article>
         ))}
-      </div>
-      <div className="mt-4 text-center text-xl font-semibold md:mt-6">
+      </section>
+      <footer className="mt-4 text-center text-xl font-semibold md:mt-6">
         ...y muchas otras!
-      </div>
+      </footer>
     </section>
   );
 }
