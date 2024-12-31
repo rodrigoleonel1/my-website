@@ -2,6 +2,16 @@ import { Project } from "./types";
 
 export const FEATURED_PROJECTS: Project[] = [
   {
+    title: "Lunatika Accesorios",
+    description:
+      "Pagina catálogo de Lunatika Accesorios para visualizar productos y contactar con la dueña mediante Whatsapp. También cuenta con un dashboard para que la administradora pueda ver, editar, crear y eliminar productos, categorías y materiales.",
+    tools: ["NextJS", "Supabase", "Tailwind CSS", "Shadcn/ui", "Zod"],
+    demo: "https://lunatika.vercel.app/",
+    repo: "https://github.com/rodrigoleonel1/lunatika",
+    img: "/projects/lunatika.jpg",
+    alt: "Lunatika web preview",
+  },
+  {
     title: "Sneakers E-commerce",
     description:
       "E-commerce de Zapatillas que permite navegar por las categorías, los productos y sus detalles. Cuenta con lógica de carrito que permite generar de órdenes de compra.",
@@ -29,16 +39,6 @@ export const FEATURED_PROJECTS: Project[] = [
     img: "/projects/ecommerce1.jpg",
     alt: "Fullstack ecommerce web preview",
   },
-  {
-    title: "Pokédex",
-    description:
-      "Pokédex realizada con el uso de API, manipulación de DOM, métodos de arrays, local storage y CSS nesting.",
-    tools: ["Javascript", "Bootstrap", "CSS 3", "Sweetalert2"],
-    demo: "https://rodrigoleonel1.github.io/js-pokedex/",
-    repo: "https://github.com/rodrigoleonel1/js-pokedex",
-    img: "/projects/pokedex1.jpg",
-    alt: "Pokedex web preview",
-  },
 ];
 
 export const PROJECTS = [
@@ -61,6 +61,16 @@ export const PROJECTS = [
     img: "/projects/radiante1.jpg",
     alt: "Events hall web preview",
   },
+  // {
+  //   title: "Pokédex",
+  //   description:
+  //     "Pokédex realizada con el uso de API, manipulación de DOM, métodos de arrays, local storage y CSS nesting.",
+  //   tools: ["Javascript", "Bootstrap", "CSS 3", "Sweetalert2"],
+  //   demo: "https://rodrigoleonel1.github.io/js-pokedex/",
+  //   repo: "https://github.com/rodrigoleonel1/js-pokedex",
+  //   img: "/projects/pokedex1.jpg",
+  //   alt: "Pokedex web preview",
+  // },
 ];
 
 export const SKILLS = [
@@ -95,6 +105,14 @@ export const SKILLS = [
     src: "/skills/mongodb.svg",
   },
   {
+    name: "PostgreSQL",
+    src: "/skills/postgresql.svg",
+  },
+  {
+    name: "Supabase",
+    src: "/skills/supabase.svg",
+  },
+  {
     name: "Tailwind",
     src: "/skills/tailwindcss.svg",
   },
@@ -114,10 +132,10 @@ export const SKILLS = [
     name: "Firebase",
     src: "/skills/firebase.svg",
   },
-  // {
-  //   name: "Git",
-  //   src: "/skills/git.svg",
-  // },
+  {
+    name: "Git",
+    src: "/skills/git.svg",
+  },
   // {
   //   name: "NPM",
   //   src: "/skills/npm.svg",
