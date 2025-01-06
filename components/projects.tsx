@@ -1,4 +1,4 @@
-import { FEATURED_PROJECTS, PROJECTS } from "@/libs/constants";
+import { FEATURED_PROJECTS, PROJECTS } from "@/lib/constants";
 import { ProjectIcon } from "@/components/svg";
 import ProjectCard from "./ui/project-card";
 import ProjectMiniCard from "./ui/project-minicard";

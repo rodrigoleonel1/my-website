@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-import { SKILLS } from "@/libs/constants";
+import { SKILLS } from "@/lib/constants";
 import { ToolsIcon } from "@/components/svg";
 
 export default function Technologies() {

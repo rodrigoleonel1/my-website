@@ -1,5 +1,5 @@
 import { ExternalLinkIcon } from "../svg";
-import { MiniProject } from "@/libs/types";
+import { MiniProject } from "@/lib/types";
 
 export default function ProjectMiniCard({ project }: { project: MiniProject }) {
   return (
