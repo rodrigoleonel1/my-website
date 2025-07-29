@@ -17,6 +17,8 @@ export default function Header({ className }: { className?: string }) {
     const handleScroll = () => {
       const scrollPos = window.scrollY + window.innerHeight / 2;
 
+      let current = navItems[0].name;
+
       for (const item of navItems) {
         const section = document.querySelector(item.url) as HTMLElement;
         if (section) {
@@ -24,11 +26,12 @@ export default function Header({ className }: { className?: string }) {
           const offsetBottom = offsetTop + section.offsetHeight;
 
           if (scrollPos >= offsetTop && scrollPos < offsetBottom) {
-            setActiveTab(item.name);
+            current = item.name;
             break;
           }
         }
       }
+      setActiveTab(current);
     };
 
     window.addEventListener("scroll", handleScroll);
