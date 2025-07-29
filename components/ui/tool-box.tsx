@@ -9,20 +9,25 @@ export const ToolBox = ({ tools }: { tools: Tool[] }) => {
   const x = useMotionValue(0);
   const animationFrameRef = useRef<number | null>(null);
 
-  const handleMouseMove = (event: any) => {
+  const handleMouseMove = (
+    event: React.MouseEvent<HTMLImageElement, MouseEvent>
+  ) => {
     if (animationFrameRef.current) {
       cancelAnimationFrame(animationFrameRef.current);
     }
 
+    const target = event.currentTarget; // <- mejor que usar event.target
+    const offsetX = event.nativeEvent.offsetX;
+
     animationFrameRef.current = requestAnimationFrame(() => {
-      const halfWidth = event.target.offsetWidth / 2;
-      x.set(event.nativeEvent.offsetX - halfWidth);
+      const halfWidth = target.offsetWidth / 2;
+      x.set(offsetX - halfWidth);
     });
   };
 
   return (
     <>
-      {tools.map((tool, idx) => (
+      {tools.map((tool) => (
         <div
           className="group relative -mr-4"
           key={tool.name}
