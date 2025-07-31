@@ -1,24 +1,18 @@
-export interface Project {
-  title: string;
-  description: string;
-  tools: Tool[];
-  demo: string | false;
-  repo: string;
-  img: string;
-  alt: string;
-}
-
 export interface Tool {
-  id: number;
+  id: string;
   name: string;
   image: string;
-  invert: boolean;
+  invert?: boolean;
 }
 
-export interface MiniProject {
+export interface Project {
+  id: string;
   title: string;
   description: string;
   tools: Tool[];
-  demo: string;
+  demo?: string | null;
   repo: string;
+  img: string;
+  alt?: string;
+  featured?: boolean;
 }

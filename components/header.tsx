@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 import NavItem from "./ui/nav-item";
 
@@ -31,14 +32,17 @@ export default function Header({ className }: { className?: string }) {
           }
         }
       }
-      setActiveTab(current);
+
+      if (current !== activeTab) {
+        setActiveTab(current);
+      }
     };
 
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     handleScroll();
 
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [activeTab]);
 
   return (
     <header
@@ -55,7 +59,8 @@ export default function Header({ className }: { className?: string }) {
             alt="Rodrigo Alarcón avatar"
           />
         </article>
-        <div className="flex  transition-all duration-300 ">
+
+        <motion.div layout className="flex transition-all duration-300">
           {navItems.map((item) => (
             <NavItem
               key={item.name}
@@ -65,7 +70,7 @@ export default function Header({ className }: { className?: string }) {
               onClick={() => setActiveTab(item.name)}
             />
           ))}
-        </div>
+        </motion.div>
       </nav>
     </header>
   );

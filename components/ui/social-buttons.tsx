@@ -1,29 +1,50 @@
 import { GithubIcon, LinkedinIcon, MailIcon } from "@/components/svg";
 import Clipboard from "./clipboard";
 
+function ExternalLink({
+  href,
+  children,
+  ariaLabel,
+}: {
+  href: string;
+  children: React.ReactNode;
+  ariaLabel: string;
+}) {
+  return (
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label={ariaLabel}
+      className="btn-icon gap-2"
+    >
+      {children}
+    </a>
+  );
+}
+
 export default function SocialButtons() {
   return (
-    <article className="py-2 gap-4 flex text-blue-400">
-      <a
+    <nav
+      aria-label="Social media links"
+      className="py-2 flex gap-4 text-blue-400"
+    >
+      <ExternalLink
         href="https://github.com/rodrigoleonel1"
-        target={"_blank"}
-        rel={"noreferrer"}
-        aria-label="See the repository for this project on github."
-        className="btn-icon gap-2"
+        ariaLabel="GitHub profile"
       >
         <GithubIcon size={32} />
         <p>Github</p>
-      </a>
-      <a
+      </ExternalLink>
+
+      <ExternalLink
         href="https://www.linkedin.com/in/rodrigoalarc%C3%B3n/"
-        target={"_blank"}
-        rel={"noreferrer"}
-        aria-label="See this project website."
-        className="btn-icon gap-2"
+        ariaLabel="LinkedIn profile"
       >
         <LinkedinIcon size={32} />
         <p>Linkedin</p>
-      </a>
+      </ExternalLink>
+
       <Clipboard
         text={{ contact: "rodricsxd@gmail.com", type: "Email" }}
         className="btn-icon gap-2"
@@ -31,6 +52,6 @@ export default function SocialButtons() {
         <MailIcon size={32} />
         <p>Mail</p>
       </Clipboard>
-    </article>
+    </nav>
   );
 }
