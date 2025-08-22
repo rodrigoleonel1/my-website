@@ -1,24 +1,82 @@
-import { ExternalLinkIcon } from "./svg";
-import SocialButtons from "./ui/social-buttons";
-import AnimationDiv from "./ui/animation-div";
+import { Github, Linkedin, Mail } from "lucide-react";
+import Logo from "./ui/logo";
 
 export default function Footer() {
   return (
-    <footer className="flex flex-col place-items-center justify-center mt-12 pb-6">
-      <AnimationDiv>
-        <article className="py-2 gap-4 flex flex-col items-center text-emerald-400">
-          <SocialButtons />
-          <a
-            href="https://github.com/rodrigoleonel1/my-website"
-            target={"_blank"}
-            rel={"noreferrer"}
-            className="font-medium underline text-zinc-200 flex place-items-center gap-1 dark:hover:text-blue-300 sm:text-lg"
-          >
-            Desarrollado por Rodrigo Alarcón 👨‍💻
-            <ExternalLinkIcon size={20} />
-          </a>
-        </article>
-      </AnimationDiv>
+    <footer className="border-t border-gray-700 bg-black px-6 py-12">
+      <div className="mx-auto max-w-4xl grid grid-cols-1 md:grid-cols-3 gap-8 justify-between">
+        {/* Logo and Description */}
+        <div className="space-y-4">
+          <div className="flex items-center space-x-3">
+            <Logo />
+            <span className="text-xl font-playfair font-semibold">
+              Rodrigo Alarcón
+            </span>
+          </div>
+          <p className="text-neutral-400 text-sm leading-relaxed">
+            Desarrollador Fullstack enfocado en crear soluciones funcionales y
+            en constante actualización con las nuevas tecnologías.
+          </p>
+        </div>
+
+        {/* Quick Links */}
+        <div className="space-y-4">
+          <h3 className="font-semibold text-lg">Enlaces Rápidos</h3>
+          <div className="grid grid-cols-1 gap-2">
+            {[
+              { label: "Inicio", href: "#" },
+              { label: "Proyectos", href: "#projectos" },
+              { label: "Tecnologías", href: "#habilidades" },
+            ].map((link) => (
+              <a
+                key={link.label}
+                href={link.href}
+                className="text-neutral-400 hover:underline text-sm"
+              >
+                {link.label}
+              </a>
+            ))}
+          </div>
+        </div>
+
+        {/* Social Links */}
+        <div className="space-y-4">
+          <h3 className="font-semibold text-lg">Contacto</h3>
+          <div className="flex space-x-4">
+            {[
+              {
+                icon: Github,
+                href: "https://github.com/rodrigoleonel1",
+                label: "GitHub",
+                ariaLabel: "Visitar mi perfil de Github",
+              },
+              {
+                icon: Linkedin,
+                href: "https://www.linkedin.com/in/rodrigoalarc%C3%B3n",
+                label: "LinkedIn",
+                ariaLabel: "Visitar mi perfil de Linkedin",
+              },
+              {
+                icon: Mail,
+                href: "#",
+                label: "Email",
+                ariaLabel: "Enviarme un correo electrónico",
+              },
+            ].map((social) => (
+              <a
+                key={social.label}
+                href={social.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-10 h-10 rounded-full bg-primary hover:bg-blue-950 hover:text-primary-foreground transition-all duration-300 flex items-center justify-center transform hover:scale-110 hover:-translate-y-1"
+              >
+                <social.icon className="w-5 h-5" />
+                <span className="sr-only">{social.label}</span>
+              </a>
+            ))}
+          </div>
+        </div>
+      </div>
     </footer>
   );
 }

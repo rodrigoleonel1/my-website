@@ -1,77 +1,97 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { motion } from "framer-motion";
-import { cn } from "@/lib/utils";
-import NavItem from "./ui/nav-item";
+import { useState, useRef, useEffect } from "react";
+import Logo from "./ui/logo";
+import { NavItem } from "./ui/nav-item";
 
 const navItems = [
-  { name: "Inicio", url: "#inicio" },
+  { name: "Inicio", url: "#top" },
   { name: "Proyectos", url: "#proyectos" },
-  { name: "Tecnologías", url: "#tecnologias" },
+  { name: "Habilidades", url: "#habilidades" },
 ];
 
-export default function Header({ className }: { className?: string }) {
-  const [activeTab, setActiveTab] = useState(navItems[0].name);
+export default function Header() {
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+  const [activeSection, setActiveSection] = useState("inicio");
+  const tabRefs = useRef<(HTMLDivElement | null)[]>([]);
+
+  const activeIndex = navItems.findIndex((item) => {
+    const sectionId = item.url === "#top" ? "inicio" : item.url.slice(1);
+    return sectionId === activeSection;
+  });
 
   useEffect(() => {
     const handleScroll = () => {
-      const scrollPos = window.scrollY + window.innerHeight / 2;
+      const scrollY = window.scrollY + 100;
 
-      let current = navItems[0].name;
+      if (scrollY < window.innerHeight * 0.5) {
+        setActiveSection("inicio");
+      } else {
+        const sections = navItems
+          .filter((item) => item.url !== "#top")
+          .map((item) => item.url.slice(1));
 
-      for (const item of navItems) {
-        const section = document.querySelector(item.url) as HTMLElement;
-        if (section) {
-          const offsetTop = section.offsetTop;
-          const offsetBottom = offsetTop + section.offsetHeight;
-
-          if (scrollPos >= offsetTop && scrollPos < offsetBottom) {
-            current = item.name;
-            break;
+        for (const sectionId of sections) {
+          const element = document.getElementById(sectionId);
+          if (element) {
+            const { top, height } = element.getBoundingClientRect();
+            const elementTop = top + window.scrollY;
+            if (
+              scrollY >= elementTop - 200 &&
+              scrollY < elementTop + height - 200
+            ) {
+              setActiveSection(sectionId);
+              break;
+            }
           }
         }
       }
-
-      if (current !== activeTab) {
-        setActiveTab(current);
-      }
     };
 
-    window.addEventListener("scroll", handleScroll, { passive: true });
+    window.addEventListener("scroll", handleScroll);
     handleScroll();
-
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [activeTab]);
+  }, []);
+
+  const getTabStyle = (index: number) => {
+    const element = tabRefs.current[index];
+    return element
+      ? { left: `${element.offsetLeft}px`, width: `${element.offsetWidth}px` }
+      : {};
+  };
 
   return (
-    <header
-      className={cn(
-        "fixed inset-x-0 top-5 z-40 overflow-hidden px-4 max-w-4xl mx-auto rounded-md",
-        className
-      )}
-    >
-      <nav className="mx-auto flex h-[60px] items-center justify-between backdrop-blur-sm transition-all duration-300 rounded-md px-2">
-        <article className="overflow-hidden rounded-full bg-[url(/noise.png)] bg-slate-800">
-          <img
-            className="max-h-10"
-            src="/avatar.png"
-            alt="Rodrigo Alarcón avatar"
+    <header className="fixed top-0 w-full h-12 flex items-center justify-center pt-8 px-6 inset-0 z-100">
+      <div className="backdrop-blur-sm bg-white/10 rounded-full py-3 px-6 border border-white/30 flex items-center justify-between w-full max-w-4xl mx-auto">
+        <Logo />
+        <nav className="relative">
+          <div
+            className="absolute h-[30px] transition-all duration-300 ease-out bg-white/20 rounded-md"
+            style={{
+              ...getTabStyle(hoveredIndex ?? activeIndex),
+              opacity: hoveredIndex !== null ? 1 : 0,
+            }}
           />
-        </article>
-
-        <motion.div layout className="flex transition-all duration-300">
-          {navItems.map((item) => (
-            <NavItem
-              key={item.name}
-              name={item.name}
-              url={item.url}
-              isActive={activeTab === item.name}
-              onClick={() => setActiveTab(item.name)}
-            />
-          ))}
-        </motion.div>
-      </nav>
+          <div
+            className="absolute -bottom-1 h-[2px] bg-white transition-all duration-300 ease-out"
+            style={getTabStyle(activeIndex)}
+          />
+          <div className="relative flex ">
+            {navItems.map((item, index) => (
+              <NavItem
+                key={index}
+                item={item}
+                isActive={index === activeIndex}
+                onMouseEnter={() => setHoveredIndex(index)}
+                onMouseLeave={() => setHoveredIndex(null)}
+                ref={(el) => {
+                  tabRefs.current[index] = el;
+                }}
+              />
+            ))}
+          </div>
+        </nav>
+      </div>
     </header>
   );
 }

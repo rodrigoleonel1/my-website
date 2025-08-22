@@ -1,13 +1,15 @@
+import Footer from "@/components/footer";
 import Hero from "@/components/hero";
 import Projects from "@/components/projects";
-import Technologies from "@/components/technologies";
+import Tools from "@/components/tools";
 
 export default function Home() {
   return (
-    <main className="flex flex-col mx-auto max-w-4xl">
+    <main>
       <Hero />
       <Projects />
-      <Technologies />
+      <Tools />
+      <Footer />
     </main>
   );
 }

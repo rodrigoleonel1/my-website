@@ -3,14 +3,17 @@ import type { Metadata } from "next";
 import { Toaster } from "sonner";
 
 import { ThemeProvider } from "@/providers/theme-provider";
-import { neueMontreal } from "./fonts";
-import Header from "@/components/header";
-import Footer from "@/components/footer";
+import { Archivo } from "next/font/google";
 
 export const metadata: Metadata = {
   title: "Rodrigo Alarcón",
   description: "Rodrigo Alarcón portafolio web.",
 };
+
+const archivo = Archivo({
+  subsets: ["latin"],
+  display: "swap",
+});
 
 export default function RootLayout({
   children,
@@ -19,18 +22,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body
-        className={`${neueMontreal.variable} antialiased bg-[url(/noise.png)] bg-repeat`}
-      >
+      <body className={`${archivo.className} antialiased`}>
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"
           enableSystem
           disableTransitionOnChange
         >
-          <Header />
           {children}
-          <Footer />
           <Toaster richColors />
         </ThemeProvider>
       </body>

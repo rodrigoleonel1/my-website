@@ -1,41 +1,29 @@
-import Accent from "./ui/accent";
-import AnimationDiv from "./ui/animation-div";
-import { PROJECTS } from "@/lib/constants";
-import ProjectCard from "./ui/project-card";
-import ProjectMinicard from "./ui/project-minicard";
+import { PROJECTS } from "@/lib/projects";
+import SectionHeader from "./ui/section-header";
+import CardProject from "./ui/card-project";
+import CardMini from "./ui/card-mini";
 
 export default function Projects() {
-  // Filtrar proyectos destacados y regulares
   const featuredProjects = PROJECTS.filter((p) => p.featured);
   const otherProjects = PROJECTS.filter((p) => !p.featured);
-
   return (
     <section
       id="proyectos"
-      className="flex flex-col justify-center max-w-4xl p-6 pt-24"
+      className="relative bg-[url(/noise.png)] bg-blue-950/50 px-4"
     >
-      {/* Título sin delay */}
-      <AnimationDiv>
-        <h2 className="font-bold text-5xl tracking-tighter -ml-0.5 mb-8">
-          <Accent>Proyectos.</Accent>
-        </h2>
-      </AnimationDiv>
-
-      {/* Proyectos destacados con animaciones escalonadas */}
-      <section className="mx-auto flex flex-col justify-center place-items-center gap-6">
+      <SectionHeader
+        title="MIS PROYECTOS"
+        subtitle="Una selección de proyectos en los que he trabajado."
+      />
+      <section className="mx-auto grid grid-cols-1 gap-6 md:gap-4 pt-12 md:py-4 relative z-50">
         {featuredProjects.map((project, index) => (
-          <AnimationDiv key={project.id} delay={index * 0.1}>
-            <ProjectCard project={project} />
-          </AnimationDiv>
+          <CardProject key={project.id} project={project} />
         ))}
       </section>
 
-      {/* Mini cards animadas con delay secuencial */}
-      <section className="mt-6 grid gap-4 sm:grid-cols-2">
+      <section className="grid gap-4 md:grid-cols-2 pb-12 max-w-4xl mx-auto pt-6 w-full">
         {otherProjects.map((project, index) => (
-          <AnimationDiv key={project.id} delay={index * 0.1}>
-            <ProjectMinicard project={project} />
-          </AnimationDiv>
+          <CardMini key={project.id} project={project} />
         ))}
       </section>
     </section>
