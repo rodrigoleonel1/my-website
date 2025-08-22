@@ -37,7 +37,7 @@ export default function SectionHeader({
           ></path>
         </svg>
       </div>
-      <p className="text-neutral-400 px-6">{subtitle}</p>
+      <p className="text-neutral-400 px-6 text-center">{subtitle}</p>
     </article>
   );
 }
