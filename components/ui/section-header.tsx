@@ -1,5 +1,3 @@
-import React from "react";
-
 export default function SectionHeader({
   title,
   subtitle,
@@ -20,7 +18,7 @@ export default function SectionHeader({
           viewBox="0 0 75 62"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
-          className="absolute hidden sm:block top-6 -right-22"
+          className="absolute hidden md:block top-6 -right-22"
         >
           <path
             d="M1 1C6.24431 1.21626 11.5365 2.05428 16.6516 3.13955C28.7596 5.70848 41.2898 9.45859 51.3287 17.0631C61.1747 24.5214 66.3737 34.4703 69.1034 46.2597C70.3557 51.6681 70.3959 56.1136 70.6176 61.434"
