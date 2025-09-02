@@ -1,5 +1,6 @@
 import { Github, Linkedin, Mail } from "lucide-react";
 import Logo from "./ui/logo";
+import Clipboard from "./ui/clipboard";
 
 export default function Footer() {
   return (
@@ -56,12 +57,6 @@ export default function Footer() {
                 label: "LinkedIn",
                 ariaLabel: "Visitar mi perfil de Linkedin",
               },
-              {
-                icon: Mail,
-                href: "#",
-                label: "Email",
-                ariaLabel: "Enviarme un correo electrónico",
-              },
             ].map((social) => (
               <a
                 key={social.label}
@@ -74,6 +69,18 @@ export default function Footer() {
                 <span className="sr-only">{social.label}</span>
               </a>
             ))}
+            <Clipboard
+              text={{ contact: "rodricsxd@gmail.com", type: "Email" }}
+              className=""
+            >
+              <a
+                href="mailto:rodricsxd@gmail.com"
+                aria-label="Enviarme un correo electrónico"
+                className="w-10 h-10 rounded-full bg-primary hover:bg-blue-950 hover:text-primary-foreground transition-all duration-300 flex items-center justify-center transform hover:scale-110 hover:-translate-y-1"
+              >
+                <Mail className="w-5 h-5" />
+              </a>
+            </Clipboard>
           </div>
         </div>
       </div>

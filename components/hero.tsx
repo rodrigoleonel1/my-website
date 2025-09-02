@@ -3,6 +3,7 @@ import { Github, Linkedin, Mail } from "lucide-react";
 import DarkVeil from "./ui/dark-veil";
 import HeroBg from "./ui/hero-bg";
 import CornerElements from "./ui/corner-elements";
+import Clipboard from "./ui/clipboard";
 
 export default function Hero() {
   return (
@@ -52,14 +53,19 @@ export default function Hero() {
             <Linkedin size={20} />
             Linkedin
           </a>
-          <a
-            href="mailto:rodricsxd@gmail.com"
-            aria-label="Enviarme un correo electrónico"
-            className="flex cursor-pointer items-center gap-2 border-2 border-white px-4 py-2 shadow-[4px_4px_0px_0px] transition-all duration-300 hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-none"
+          <Clipboard
+            text={{ contact: "rodricsxd@gmail.com", type: "Email" }}
+            className=""
           >
-            <Mail size={20} />
-            Mail
-          </a>
+            <a
+              href="mailto:rodricsxd@gmail.com"
+              aria-label="Enviarme un correo electrónico"
+              className="flex cursor-pointer items-center gap-2 border-2 border-white px-4 py-2 shadow-[4px_4px_0px_0px] transition-all duration-300 hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-none"
+            >
+              <Mail size={20} />
+              Mail
+            </a>
+          </Clipboard>
         </article>
       </section>
 
