@@ -16,13 +16,13 @@ export default function Projects() {
         subtitle="Una selección de proyectos en los que he trabajado."
       />
       <section className="mx-auto grid grid-cols-1 gap-6 md:gap-4 pt-12 md:py-4 relative z-50">
-        {featuredProjects.map((project, index) => (
+        {featuredProjects.map((project) => (
           <CardProject key={project.id} project={project} />
         ))}
       </section>
 
       <section className="grid gap-4 md:grid-cols-2 pb-12 max-w-4xl mx-auto pt-6 w-full">
-        {otherProjects.map((project, index) => (
+        {otherProjects.map((project) => (
           <CardMini key={project.id} project={project} />
         ))}
       </section>

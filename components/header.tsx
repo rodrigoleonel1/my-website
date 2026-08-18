@@ -14,11 +14,30 @@ export default function Header() {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const [activeSection, setActiveSection] = useState("inicio");
   const tabRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const [tabPositions, setTabPositions] = useState<
+    Record<number, { left: number; width: number }>
+  >({});
 
   const activeIndex = navItems.findIndex((item) => {
     const sectionId = item.url === "#top" ? "inicio" : item.url.slice(1);
     return sectionId === activeSection;
   });
+
+  useEffect(() => {
+    const updatePositions = () => {
+      const next: Record<number, { left: number; width: number }> = {};
+      tabRefs.current.forEach((element, index) => {
+        if (element) {
+          next[index] = { left: element.offsetLeft, width: element.offsetWidth };
+        }
+      });
+      setTabPositions(next);
+    };
+
+    updatePositions();
+    window.addEventListener("resize", updatePositions);
+    return () => window.removeEventListener("resize", updatePositions);
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -53,12 +72,7 @@ export default function Header() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const getTabStyle = (index: number) => {
-    const element = tabRefs.current[index];
-    return element
-      ? { left: `${element.offsetLeft}px`, width: `${element.offsetWidth}px` }
-      : {};
-  };
+  const getTabStyle = (index: number) => tabPositions[index] ?? {};
 
   return (
     <header className="fixed top-0 w-full h-12 flex items-center justify-center pt-8 px-6 inset-0 z-100">

@@ -7,6 +7,7 @@ export default function ToolBadge({ tool }: { tool: Tool }) {
       className="inline-flex rounded-lg border px-2 py-1 text-sm w-fit whitespace-nowrap shrink-0 gap-2 bg-neutral-900 border-white/10"
       key={tool.id}
     >
+      {/* eslint-disable-next-line @next/next/no-img-element -- tiny local SVG icon, Image() requires extra SVG config */}
       <img
         height="16"
         width="16"

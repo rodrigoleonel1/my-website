@@ -1,5 +1,5 @@
 import Header from "./header";
-import { Github, Linkedin, Mail } from "lucide-react";
+import { GithubIcon, LinkedinIcon, MailIcon } from "./svg";
 import DarkVeil from "./ui/dark-veil";
 import HeroBg from "./ui/hero-bg";
 import CornerElements from "./ui/corner-elements";
@@ -40,7 +40,7 @@ export default function Hero() {
             aria-label="Visitar mi perfil de Github"
             className="flex cursor-pointer items-center gap-2 border-2 border-white px-4 py-2 shadow-[4px_4px_0px_0px] transition-all duration-300 hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-none"
           >
-            <Github size={20} />
+            <GithubIcon size={20} />
             Github
           </a>
           <a
@@ -50,7 +50,7 @@ export default function Hero() {
             aria-label="Visitar mi perfil de Linkedin"
             className="flex cursor-pointer items-center gap-2 border-2 border-white px-4 py-2 shadow-[4px_4px_0px_0px] transition-all duration-300 hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-none"
           >
-            <Linkedin size={20} />
+            <LinkedinIcon size={20} />
             Linkedin
           </a>
           <Clipboard
@@ -62,7 +62,7 @@ export default function Hero() {
               aria-label="Enviarme un correo electrónico"
               className="flex cursor-pointer items-center gap-2 border-2 border-white px-4 py-2 shadow-[4px_4px_0px_0px] transition-all duration-300 hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-none"
             >
-              <Mail size={20} />
+              <MailIcon size={20} />
               Mail
             </a>
           </Clipboard>

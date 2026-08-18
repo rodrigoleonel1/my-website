@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Github, Link2 } from "lucide-react";
+import { Link2 } from "lucide-react";
+import { GithubIcon } from "../svg";
 import { Project } from "@/lib/interfaces";
 import ToolBadge from "./tool-badge";
 
@@ -41,7 +42,7 @@ export default function CardProject({ project }: { project: Project }) {
               rel="noopener noreferrer"
               className="hover:bg-blue-950 flex gap-2 border-white/10 border bg-primary px-3 py-2 rounded-lg"
             >
-              <Github className="h-6 w-6 transition-all" /> <p>Repo</p>
+              <GithubIcon className="h-6 w-6 transition-all" /> <p>Repo</p>
             </Link>
           )}
 

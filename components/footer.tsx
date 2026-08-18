@@ -1,4 +1,4 @@
-import { Github, Linkedin, Mail } from "lucide-react";
+import { GithubIcon, LinkedinIcon, MailIcon } from "./svg";
 import Logo from "./ui/logo";
 import Clipboard from "./ui/clipboard";
 
@@ -46,13 +46,13 @@ export default function Footer() {
           <div className="flex space-x-4">
             {[
               {
-                icon: Github,
+                icon: GithubIcon,
                 href: "https://github.com/rodrigoleonel1",
                 label: "GitHub",
                 ariaLabel: "Visitar mi perfil de Github",
               },
               {
-                icon: Linkedin,
+                icon: LinkedinIcon,
                 href: "https://www.linkedin.com/in/rodrigoalarc%C3%B3n",
                 label: "LinkedIn",
                 ariaLabel: "Visitar mi perfil de Linkedin",
@@ -78,7 +78,7 @@ export default function Footer() {
                 aria-label="Enviarme un correo electrónico"
                 className="w-10 h-10 rounded-full bg-primary hover:bg-blue-950 hover:text-primary-foreground transition-all duration-300 flex items-center justify-center transform hover:scale-110 hover:-translate-y-1"
               >
-                <Mail className="w-5 h-5" />
+                <MailIcon className="w-5 h-5" />
               </a>
             </Clipboard>
           </div>
